@@ -36,6 +36,10 @@ export class AppComponent implements OnInit{
     this.courseForm.reset();
   }
 
+  deleteCourse(course: ICourse) {
+    this.coursesService.deleteCourse(course);
+  }
+
 }
 
 interface ICourse {

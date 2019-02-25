@@ -31,7 +31,7 @@ export class CourseService {
 
     }
 
-    deleteCourse(){
-
+    deleteCourse(course) {
+      return this.db.database.ref('/courses/' + course.key).remove();
     }
 }

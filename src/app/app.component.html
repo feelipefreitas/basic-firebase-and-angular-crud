@@ -1,6 +1,6 @@
 <div class="container jumbotron">
   <h1 class="display-4">Add an Course</h1>
-  
+
   <form [formGroup]="courseForm" (ngSubmit)="addCourse(courseForm.value)">
     <div class="form-group">
       <label for="courseName">Course Name</label>
@@ -20,15 +20,16 @@
   <br /> <br /> <br />
 
   <h1 class="display-4">List of Courses</h1>
-  
+
   <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active" *ngFor="let course of coursesList">
+    <a href="#" class="list-group-item list-group-item-action" *ngFor="let course of coursesList">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{ course.value.name }}</h5>
         <small>{{ course.value.price }}</small>
       </div>
       <p class="mb-1">{{ course.value.description }}</p>
+      <button class="btn btn-danger" (click)="deleteCourse(course)">Delete</button>
     </a>
   </div>
-  
+
 </div>
