@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CourseService } from './services/course.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   
+  coursesList: IFirebase[];
   courseForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private coursesService: CourseService) {
     this.courseForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -18,8 +20,15 @@ export class AppComponent {
     });
   }
 
-  addCourse(course: ICourse) {
-    console.log(course)
+  ngOnInit() {
+    this.getCourses();
+  }
+
+  getCourses() {
+    this.coursesService.getCourses().subscribe((courses: IFirebase[]) => {
+      this.coursesList = courses;
+      console.log(this.coursesList);
+    });
   }
 
 }
@@ -28,4 +37,9 @@ interface ICourse {
   name: string;
   description: string;
   price: string;
+}
+
+export interface IFirebase {
+  key: string | number;
+  value: ICourse | {};
 }

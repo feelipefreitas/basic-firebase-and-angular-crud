@@ -7,6 +7,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
+import { CourseService } from './services/course.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
