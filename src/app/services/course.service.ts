@@ -24,7 +24,7 @@ export class CourseService {
     }
 
     addCourse(course) {
-
+      return this.db.database.ref('/courses').push(course);
     }
 
     updateCourse(course) {

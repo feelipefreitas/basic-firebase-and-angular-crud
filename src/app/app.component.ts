@@ -8,7 +8,7 @@ import { CourseService } from './services/course.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  
+
   coursesList: IFirebase[];
   courseForm: FormGroup;
 
@@ -29,6 +29,11 @@ export class AppComponent implements OnInit{
       this.coursesList = courses;
       console.log(this.coursesList);
     });
+  }
+
+  addCourse(course: ICourse) {
+    this.coursesService.addCourse(course);
+    this.courseForm.reset();
   }
 
 }
