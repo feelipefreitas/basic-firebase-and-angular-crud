@@ -1,10 +1,20 @@
-# BasicFirebaseAndAngularCrud
+# Necessary imports
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+npm install firebase
+npm install angularfire2
 
-## Development server
+## Basic settings
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After creating the project on console.firebase.google.com. Find the option "Add Firebase to your Web App" and take the options inside the object.
+Eg: 
+    apiKey: "AIzaSyBFtQpV0VKTDjkpMlTWU68b23V9tq11ksw",
+    authDomain: "basiccrudwithangular.firebaseapp.com",
+    databaseURL: "https://basiccrudwithangular.firebaseio.com",
+    projectId: "basiccrudwithangular",
+    storageBucket: "basiccrudwithangular.appspot.com",
+    messagingSenderId: "881091219316"
+
+    
 
 ## Code scaffolding
 
