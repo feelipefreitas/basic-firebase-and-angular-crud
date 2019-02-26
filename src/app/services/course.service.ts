@@ -28,7 +28,7 @@ export class CourseService {
     }
 
     updateCourse(course) {
-
+      return this.db.database.ref('/courses/' + course.key).update(course);
     }
 
     deleteCourse(course) {

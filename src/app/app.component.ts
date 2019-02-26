@@ -11,9 +11,11 @@ export class AppComponent implements OnInit{
 
   coursesList: IFirebase[];
   courseForm: FormGroup;
+  addFormType = true;
 
   constructor(private fb: FormBuilder, private coursesService: CourseService) {
     this.courseForm = this.fb.group({
+      key: ['', Validators.required],
       name: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required]
@@ -38,6 +40,22 @@ export class AppComponent implements OnInit{
 
   deleteCourse(course: ICourse) {
     this.coursesService.deleteCourse(course);
+  }
+
+  updateCourse(course) {
+    this.coursesService.updateCourse(course);
+    this.courseForm.reset();
+    this.addFormType = true;
+  }
+
+  setFormToUpdate(course) {
+    this.courseForm.setValue({
+      key: course.key,
+      name: course.value.name,
+      description: course.value.description,
+      price: course.value.price
+    });
+    this.addFormType = false;
   }
 
 }
